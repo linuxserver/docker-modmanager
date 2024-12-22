@@ -32,7 +32,7 @@ Find us at:
 [![Docker Stars](https://img.shields.io/docker/stars/linuxserver/modmanager.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/linuxserver/modmanager)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-modmanager%2Fjob%2Fmain%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-modmanager/job/main/)
 
-Modmanager is a centralised tool for downloading and updating docker mods for all your other containers.
+Modmanager is a centralised tool for downloading and updating docker mods for all your other Linuxserver containers.
 
 ![modmanager](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/docker-logo.png)
 
@@ -58,8 +58,9 @@ The Modmanager container will download all needed mods on startup and then check
 
 You can then mount your `/modcache` path into any other Linuxserver container and they will pull their mods from there rather than downloading them each time.
 
->[!NOTE]
->If a mod requires additional packages to be installed, each container will still need to download them each time it is recreated.
+If a mod requires additional packages to be installed, each container will still need to download them each time it is recreated.
+
+Note that the Modmanager container itself does not support applying mods *or* custom files/services.
 
 ## Usage
 
