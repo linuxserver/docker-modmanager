@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+CRON_MINS=$((0 + RANDOM % 59))
+
+sed -i "s/@@MINUTES@@/${CRON_MINS}/" /etc/crontabs/root
+
+echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour"
+
+/app/update-mods.sh

@@ -1,0 +1,20 @@
+---
+
+# jenkins variables
+project_name: docker-modmanager
+external_type: os
+release_type: stable
+release_tag: latest
+ls_branch: main
+repo_vars:
+  - CONTAINER_NAME = modmanager'
+  - BUILD_VERSION_ARG = 'OS'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-modmanager'
+  - DOCKERHUB_IMAGE = 'linuxserver/modmanager'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/modmanagerc'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/modmanager'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH='true'
+  - CI='true'
+  - CI_WEB='false'
