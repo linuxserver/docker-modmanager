@@ -6,6 +6,9 @@ external_type: os
 release_type: stable
 release_tag: latest
 ls_branch: main
+image_provenance: false
+image_sbom: false
+image_builder: default
 repo_vars:
   - CONTAINER_NAME = 'modmanager'
   - BUILD_VERSION_ARG = 'OS'
