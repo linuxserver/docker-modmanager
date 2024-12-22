@@ -19,12 +19,12 @@ pipeline {
     DOCKERHUB_TOKEN=credentials('docker-hub-ci-pat')
     QUAYIO_API_TOKEN=credentials('quayio-repo-api-token')
     GIT_SIGNING_KEY=credentials('484fbca6-9a4f-455e-b9e3-97ac98785f5f')
-    CONTAINER_NAME = modmanager'
+    CONTAINER_NAME = 'modmanager'
     BUILD_VERSION_ARG = 'OS'
     LS_USER = 'linuxserver'
     LS_REPO = 'docker-modmanager'
     DOCKERHUB_IMAGE = 'linuxserver/modmanager'
-    DEV_DOCKERHUB_IMAGE = 'lsiodev/modmanagerc'
+    DEV_DOCKERHUB_IMAGE = 'lsiodev/modmanager'
     PR_DOCKERHUB_IMAGE = 'lspipepr/modmanager'
     DIST_IMAGE = 'alpine'
     MULTIARCH='true'

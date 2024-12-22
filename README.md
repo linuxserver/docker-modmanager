@@ -59,7 +59,7 @@ The Modmanager container will download all needed mods on startup and then check
 You can then mount your `/modcache` path into any other Linuxserver container and they will pull their mods from there rather than downloading them each time.
 
 >[!NOTE]
->If a mod requires additional packages to be installed, the container will still need to download them each time it is recreated.
+>If a mod requires additional packages to be installed, each container will still need to download them each time it is recreated.
 
 ## Usage
 
