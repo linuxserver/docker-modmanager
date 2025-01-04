@@ -109,7 +109,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 
 | Parameter | Function |
 | :----: | --- |
-| `-e DOCKER_MODS=` | Pipe-delimited (`|`) list of mods to download |
+| `-e DOCKER_MODS=` | Pipe-delimited (`\|`) list of mods to download |
 | `-e DOCKER_HOST=` | Specify the docker endpoint to use if not using the docker.sock |
 | `-v /modcache` | Modmanager mod storage. |
 | `-v /var/run/docker.sock:ro` | Mount the host docker socket into the container. |
