@@ -62,6 +62,10 @@ If a mod requires additional packages to be installed, each container will still
 
 Note that the Modmanager container itself does not support applying mods *or* custom files/services.
 
+### Security considerations
+
+Mapping `docker.sock` is a potential security liability because docker has root access on the host and any process that has full access to `docker.sock` would also have root access on the host. Docker api has no built-in way to set limitations on access, however, you can use a proxy for the `docker.sock` via a solution like [our docker socket proxy](https://github.com/linuxserver/docker-socket-proxy), which adds the ability to limit access. Then you would just set `DOCKER_HOST=` environment variable to point to the proxy address.
+
 ## Usage
 
 To help you get started creating a container from this image you can either use docker compose or the docker cli.
