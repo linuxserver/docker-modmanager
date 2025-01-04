@@ -1,0 +1,2 @@
+# min   hour    day     month   weekday command
+@@MINUTES@@     */6       *       *       *       /app/update-mods.sh 2>&1
