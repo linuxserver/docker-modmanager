@@ -5,6 +5,16 @@ CRON_MINS=$((0 + RANDOM % 59))
 
 sed -i "s/@@MINUTES@@/${CRON_MINS}/" /etc/crontabs/root
 
-echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour"
+if [[ $(date "+%H") -gt 0 && $(date "+%H") -lt 6 ]]; then
+    NEXT_HOUR=6
+elif [[ $(date "+%H") -gt 6 && $(date "+%H") -lt 12 ]]; then
+    NEXT_HOUR=12
+elif [[ $(date "+%H") -gt 12 && $(date "+%H") -lt 18 ]]; then
+    NEXT_HOUR=18
+else [[ $(date "+%H") -gt 18 && $(date "+%H") -le 23 ]];
+    NEXT_HOUR=0
+fi
+
+echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour. Next update will be at ${NEXT_HOUR}:${CRON_MINS}."
 
 /app/update-mods.sh
