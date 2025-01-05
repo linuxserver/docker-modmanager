@@ -95,7 +95,7 @@ If you are using the docker integration, our only supported means for connecting
     read_only: true
 ```
 
-And then add it to the `DOCKER_MODS_EXTRA_HOSTS` env using the full protocol and port, separating multiple servers with a pipe (`\|`), e.g.
+And then add it to the `DOCKER_MODS_EXTRA_HOSTS` env using the full protocol and port, separating multiple servers with a pipe (`|`), e.g.
 
 ```yaml
   - DOCKER_MODS_EXTRA_HOSTS=tcp://host1.example.com:2375|tcp://host2.example.com:2375|tcp://192.168.0.5:2375
