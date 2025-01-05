@@ -6,9 +6,8 @@ find_docker_mods() {
     if [[ "${2}" != "default" ]]; then
         docker context create "${2}" --docker "host=${1}" >/dev/null 2>&1
     fi
-    docker --context "${2}" ps -q >/dev/null 2>&1 || DOCKER_MOD_CONTEXT_FAIL=true
+    docker --context "${2}" ps -q >/dev/null 2>&1 || local DOCKER_MOD_CONTEXT_FAIL=true
     if [[ "${DOCKER_MOD_CONTEXT_FAIL}" == "true" ]]; then
-        unset DOCKER_MOD_CONTEXT_FAIL
         echo "[mod-init] (ERROR) Cannot connect to the Docker daemon at ${2}, skipping host"
         return
     fi
