@@ -52,7 +52,7 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-You can specify mods to download via the `DOCKER_MODS` environment variable like any other container, or allow discovery through docker by mounting the docker socket into the container (or configuring a suitable alternative endpoint via DOCKER_HOST).
+You can specify mods to download via the `DOCKER_MODS` environment variable like any other container, or allow discovery through docker by mounting the docker socket into the container (or configuring a suitable alternative endpoint via the built-in `DOCKER_HOST` environment variable).
 
 The Modmanager container will download all needed mods on startup and then check for updates every 6 hours; if you're using docker discovery it will automatically pick up any new mods.
 
@@ -64,38 +64,38 @@ Note that the Modmanager container itself does not support applying mods *or* cu
 
 ### Security considerations
 
-Mapping `docker.sock` is a potential security liability because docker has root access on the host and any process that has full access to `docker.sock` would also have root access on the host. Docker api has no built-in way to set limitations on access, however, you can use a proxy for the `docker.sock` via a solution like [our docker socket proxy](https://github.com/linuxserver/docker-socket-proxy), which adds the ability to limit access. Then you would just set `DOCKER_HOST=` environment variable to point to the proxy address.
+Mapping `docker.sock` is a potential security liability because docker has root access on the host and any process that has full access to `docker.sock` would therefore also have root access on the host. The docker API has no built-in way to set limitations on access, however, you can use a proxy for `docker.sock` via a solution like [our docker socket proxy](https://github.com/linuxserver/docker-socket-proxy), which adds the ability to limit API access to specific endpoints.
 
 ### Multiple Hosts
 
 >[!NOTE]
 >Make sure you fully understand what you're doing before you try and set this up as there are lots of ways it can go wrong if you're just guessing.
 
-Modmanager can query & download mods for remote hosts, as well as the one on which it is installed. At a very basic level if you're just using the DOCKER_MODS env and not the docker integration, simply mount the `/modcache` folder on your remote host(s), ensuring it is mapped for all participating containers.
+Modmanager can query & download mods for remote hosts, as well as the one on which it is installed. At a very basic level if you're just using the `DOCKER_MODS` env and not the docker integration, simply mount the `/modcache` folder on your remote host(s), ensuring it is mapped for all participating containers.
 
-If you are using the docker integration, our only supported means for connecting to remote hosts is [our socket proxy container](). Run an instance on each remote host:
+If you are using the docker integration, our only supported means for connecting to remote hosts is [our socket proxy container](https://github.com/linuxserver/docker-socket-proxy/). Run an instance on each remote host:
 
 >[!WARNING]
->DO NOT expose a socket proxy to your LAN that allows any write operations (`POST=1`, `ALLOW_RESTART=1`, etc) or that exposes any more information than is absolutely necessary. NEVER expose a socket proxy to your WAN.
+>DO NOT expose a socket proxy to your LAN if it allows any write operations (`POST=1`, `ALLOW_RESTART=1`, etc) or exposes any API elements that are not absolutely necessary. NEVER expose a socket proxy to your WAN.
 
 ```yml
   modmanager-dockerproxy:
-  image: lscr.io/linuxserver/socket-proxy:latest
-  container_name: modmanager-dockerproxy
-  environment:
-    - CONTAINERS=1
-    - POST=0
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock:ro
-  tmpfs:
-    - /run:exec
-  ports:
-    - 2375:2375
-  restart: unless-stopped
-  read_only: true
+    image: lscr.io/linuxserver/socket-proxy:latest
+    container_name: modmanager-dockerproxy
+    environment:
+      - CONTAINERS=1
+      - POST=0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    tmpfs:
+      - /run:exec
+    ports:
+      - 2375:2375
+    restart: unless-stopped
+    read_only: true
 ```
 
-And then add it to the `DOCKER_MODS_EXTRA_HOSTS` env using the full protocol and port, e.g.
+And then add it to the `DOCKER_MODS_EXTRA_HOSTS` env using the full protocol and port, separating multiple servers with a pipe (`\|`), e.g.
 
 ```yaml
   - DOCKER_MODS_EXTRA_HOSTS=tcp://host1.example.com:2375|tcp://host2.example.com:2375|tcp://192.168.0.5:2375
