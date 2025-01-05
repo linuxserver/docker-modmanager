@@ -14,7 +14,7 @@ if [[ -e "/var/run/docker.sock" ]] || [[ -n "${DOCKER_HOST}" ]]; then
                 if [[ "${DOCKER_MODS}" =~ ${CONTAINER_MOD} ]]; then
                     echo -e "[mod-init] ${CONTAINER_MOD} already in mod list, skipping"
                 else
-                    echo -e "[mod-init] Found new mod ${CONTAINER_MODS} for container ${CONTAINER_NAME}"
+                    echo -e "[mod-init] Found new mod ${CONTAINER_MOD} for container ${CONTAINER_NAME}"
                     DOCKER_MODS="${DOCKER_MODS}|${CONTAINER_MOD}"
                     DOCKER_MODS="${DOCKER_MODS#|}"
                 fi
