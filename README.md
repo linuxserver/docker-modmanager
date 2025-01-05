@@ -68,8 +68,8 @@ Mapping `docker.sock` is a potential security liability because docker has root 
 
 ### Multiple Hosts
 
->[!WARNING]
->Make sure you fully understand what you're doing before you try and set this up as there are lots of ways it can go wrong.
+>[!NOTE]
+>Make sure you fully understand what you're doing before you try and set this up as there are lots of ways it can go wrong if you're just guessing.
 
 Modmanager can query & download mods for remote hosts, as well as the one on which it is installed. At a very basic level if you're just using the DOCKER_MODS env and not the docker integration, simply mount the `/modcache` folder on your remote host(s), ensuring it is mapped for all participating containers.
 
