@@ -15,6 +15,6 @@ else [[ $(date "+%H") -gt 18 && $(date "+%H") -le 23 ]];
     NEXT_HOUR=0
 fi
 
-echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour. Next update will be at ${NEXT_HOUR}:${CRON_MINS}."
+echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour. Next update will be at $(date -d${NEXT_HOUR}:${CRON_MINS} '+%H:%m')."
 
 /app/update-mods.sh
