@@ -71,9 +71,9 @@ Mapping `docker.sock` is a potential security liability because docker has root 
 >[!NOTE]
 >Make sure you fully understand what you're doing before you try and set this up as there are lots of ways it can go wrong if you're just guessing.
 
-Modmanager can query & download mods for remote hosts, as well as the one on which it is installed. At a very basic level if you're just using the `DOCKER_MODS` env and not the docker integration, simply mount the `/modcache` folder on your remote host(s), ensuring it is mapped for all participating containers.
+Modmanager can query & download mods for remote hosts, as well as the one on which it is installed. At a very basic level if you're just using the `DOCKER_MODS` env and not docker discovery, simply mount the `/modcache` folder on your remote host(s), ensuring it is mapped for all participating containers.
 
-If you are using the docker integration, our only supported means for connecting to remote hosts is [our socket proxy container](https://github.com/linuxserver/docker-socket-proxy/). Run an instance on each remote host:
+If you are using docker discovery, our only supported means for connecting to remote hosts is [our socket proxy container](https://github.com/linuxserver/docker-socket-proxy/). Run an instance on each remote host:
 
 >[!WARNING]
 >DO NOT expose a socket proxy to your LAN if it allows any write operations (`POST=1`, `ALLOW_RESTART=1`, etc) or exposes any API elements that are not absolutely necessary. NEVER expose a socket proxy to your WAN.
