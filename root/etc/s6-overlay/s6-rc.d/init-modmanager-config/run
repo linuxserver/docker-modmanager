@@ -11,13 +11,13 @@ elif [[ $(date "+%H") == 6 && $(date "+%m") -lt ${CRON_MINS} ]]; then
     NEXT_HOUR=6
 elif [[ $(date "+%H") == 12 && $(date "+%m") -lt ${CRON_MINS} ]]; then
     NEXT_HOUR=12
-elif [[ $(date "+%H") == 18 && $(date "+%m") -le ${CRON_MINS} ]]; then
+elif [[ $(date "+%H") == 18 && $(date "+%m") -lt ${CRON_MINS} ]]; then
     NEXT_HOUR=18
-elif [[ $(date "+%H") -ge 0 && $(date "+%H") -lt 6 ]]; then
+elif [[ $(date "+%H") -ge 0 && $(date "+%H") -le 5 ]]; then
     NEXT_HOUR=6
-elif [[ $(date "+%H") -ge 6 && $(date "+%H") -lt 12 ]]; then
+elif [[ $(date "+%H") -ge 6 && $(date "+%H") -le 11 ]]; then
     NEXT_HOUR=12
-elif [[ $(date "+%H") -ge 12 && $(date "+%H") -lt 18 ]]; then
+elif [[ $(date "+%H") -ge 12 && $(date "+%H") -le 17 ]]; then
     NEXT_HOUR=18
 elif [[ $(date "+%H") -ge 18 && $(date "+%H") -le 23 ]]; then
     NEXT_HOUR=0
