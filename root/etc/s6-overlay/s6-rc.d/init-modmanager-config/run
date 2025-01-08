@@ -17,4 +17,6 @@ fi
 
 echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour. Next update will be at $(date -d${NEXT_HOUR}:${CRON_MINS} '+%H:%m')."
 
+printf %s "${DOCKER_MODS}" > /run/s6/container_environment/DOCKER_MODS_STATIC
+
 /app/update-mods.sh
