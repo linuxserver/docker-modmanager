@@ -52,7 +52,7 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-You can specify mods to download via the `DOCKER_MODS` environment variable like any other container, or allow discovery through docker by mounting the docker socket into the container (or configuring a suitable alternative endpoint via the built-in `DOCKER_HOST` environment variable).
+You can specify mods to download via the `DOCKER_MODS` environment variable like any other container, or allow discovery through docker by mounting the docker socket into the container (or configuring a suitable alternative endpoint via the built-in `DOCKER_HOST` environment variable). Whichever option you choose the appropriate `DOCKER_MODS` environment variable must still be present on the containers that need to install them.
 
 The Modmanager container will download all needed mods on startup and then check for updates every 6 hours; if you're using docker discovery it will automatically pick up any new mods.
 
@@ -61,6 +61,8 @@ You can then mount your `/modcache` path into any other Linuxserver container an
 If a mod requires additional packages to be installed, each container will still need to download them each time it is recreated.
 
 Note that the Modmanager container itself does not support applying mods *or* custom files/services.
+
+**Modmanager is only supported for use with Linuxserver images built after 2025-01-01, while it may work with 3rd party containers using our images as a base we will not provide support for them.**
 
 ### Security considerations
 
