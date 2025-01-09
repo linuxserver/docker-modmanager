@@ -4,7 +4,7 @@
 find_docker_mods() {
     # Mods provided via Docker
     if [[ "${2}" != "default" ]]; then
-        MOD_STATE="(${2})"
+        local MOD_STATE="(${2})"
         docker context create "${2}" --docker "host=${1}" >/dev/null 2>&1
     fi
     docker --context "${2}" ps -q >/dev/null 2>&1 || local DOCKER_MOD_CONTEXT_FAIL=true
@@ -27,6 +27,8 @@ find_docker_mods() {
                     DOCKER_MODS="${DOCKER_MODS#|}"
                 fi
             done
+        else
+            echo -e "[mod-init] ${MOD_STATE:+${MOD_STATE} }No mods found in the ${2} context"
         fi
     done
     if [[ "${2}" != "default" ]]; then
