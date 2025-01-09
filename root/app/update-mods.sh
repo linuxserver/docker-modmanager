@@ -27,8 +27,6 @@ find_docker_mods() {
                     DOCKER_MODS="${DOCKER_MODS#|}"
                 fi
             done
-        else
-            echo -e "[mod-init] ${MOD_STATE:+${MOD_STATE} }No mods found in the ${2} context"
         fi
     done
     if [[ "${2}" != "default" ]]; then
