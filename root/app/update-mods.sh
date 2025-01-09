@@ -39,6 +39,9 @@ find_docker_mods() {
 # Reset DOCKER_MODS to whatever value the user passed into the container at creation time
 DOCKER_MODS="${DOCKER_MODS_STATIC}"
 
+echo -e ""
+echo -e "[mod-init] Running check for new mods and updates."
+
 if [[ -e "/var/run/docker.sock" ]] || [[ -n "${DOCKER_HOST}" ]]; then
     find_docker_mods "${DOCKER_HOST:-docker.sock}" "default"
 fi
