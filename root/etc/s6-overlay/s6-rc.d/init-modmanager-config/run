@@ -5,13 +5,13 @@ CRON_MINS=$((0 + RANDOM % 59))
 
 sed -i "s/@@MINUTES@@/${CRON_MINS}/" /etc/crontabs/root
 
-if [[ $(date "+%-H") == 0 && $(date "+%-m") -lt ${CRON_MINS} ]]; then
+if [[ $(date "+%-H") == 0 && $(date "+%-M") -lt ${CRON_MINS} ]]; then
     NEXT_HOUR=0
-elif [[ $(date "+%-H") == 6 && $(date "+%-m") -lt ${CRON_MINS} ]]; then
+elif [[ $(date "+%-H") == 6 && $(date "+%-M") -lt ${CRON_MINS} ]]; then
     NEXT_HOUR=6
-elif [[ $(date "+%-H") == 12 && $(date "+%-m") -lt ${CRON_MINS} ]]; then
+elif [[ $(date "+%-H") == 12 && $(date "+%-M") -lt ${CRON_MINS} ]]; then
     NEXT_HOUR=12
-elif [[ $(date "+%-H") == 18 && $(date "+%-m") -lt ${CRON_MINS} ]]; then
+elif [[ $(date "+%-H") == 18 && $(date "+%-M") -lt ${CRON_MINS} ]]; then
     NEXT_HOUR=18
 elif [[ $(date "+%-H") -ge 0 && $(date "+%-H") -le 5 ]]; then
     NEXT_HOUR=6
@@ -23,7 +23,7 @@ elif [[ $(date "+%-H") -ge 18 && $(date "+%-H") -le 23 ]]; then
     NEXT_HOUR=0
 fi
 
-echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour. Next update will be at $(date -d${NEXT_HOUR}:${CRON_MINS} '+%H:%m')."
+echo "[mod-init] Mod updates will run every 6 hours at ${CRON_MINS} minutes past the hour. Next update will be at $(date -d${NEXT_HOUR}:${CRON_MINS} '+%H:%M')."
 
 printf %s "${DOCKER_MODS}" > /run/s6/container_environment/DOCKER_MODS_STATIC
 
