@@ -502,7 +502,7 @@ pipeline {
           --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
           --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
           --label \"org.opencontainers.image.title=Modmanager\" \
-          --label \"org.opencontainers.image.description=modmanager image by linuxserver.io\" \
+          --label \"org.opencontainers.image.description=Modmanager is a centralised tool for downloading and updating docker mods for all your other Linuxserver containers.\" \
           --no-cache --pull -t ${IMAGE}:${META_TAG} --platform=linux/amd64 \
           --provenance=true --sbom=true --builder=container --load \
           --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
@@ -568,7 +568,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Modmanager\" \
-              --label \"org.opencontainers.image.description=modmanager image by linuxserver.io\" \
+              --label \"org.opencontainers.image.description=Modmanager is a centralised tool for downloading and updating docker mods for all your other Linuxserver containers.\" \
               --no-cache --pull -t ${IMAGE}:amd64-${META_TAG} --platform=linux/amd64 \
               --provenance=true --sbom=true --builder=container --load \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
@@ -627,7 +627,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Modmanager\" \
-              --label \"org.opencontainers.image.description=modmanager image by linuxserver.io\" \
+              --label \"org.opencontainers.image.description=Modmanager is a centralised tool for downloading and updating docker mods for all your other Linuxserver containers.\" \
               --no-cache --pull -f Dockerfile.aarch64 -t ${IMAGE}:arm64v8-${META_TAG} --platform=linux/arm64 \
               --provenance=true --sbom=true --builder=container --load \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
