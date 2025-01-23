@@ -2,7 +2,8 @@
 
 # project information
 project_name: modmanager
-project_description: Modmanager is a centralised tool for downloading and updating docker mods for all your other Linuxserver containers.
+project_blurb: Modmanager is a centralised tool for downloading and updating docker mods for all your other Linuxserver containers.
+project_categories: "Docker"
 full_custom_readme: |
   {% raw -%}
   [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)](https://linuxserver.io)
