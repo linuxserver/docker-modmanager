@@ -90,7 +90,7 @@ If you are using docker discovery, our only supported means for connecting to re
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     tmpfs:
-      - /run:exec
+      - /run
     ports:
       - 2375:2375
     restart: unless-stopped
