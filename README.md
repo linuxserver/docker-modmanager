@@ -70,15 +70,13 @@ Mapping `docker.sock` is a potential security liability because docker has root 
 
 ### Multiple Hosts
 
->[!NOTE]
->Make sure you fully understand what you're doing before you try and set this up as there are lots of ways it can go wrong if you're just guessing.
+?+note[Security](|Make sure you fully understand what you're doing before you try and set this up as there are lots of ways it can go wrong if you're just guessing.|)
 
 Modmanager can query & download mods for remote hosts, as well as the one on which it is installed. At a very basic level if you're just using the `DOCKER_MODS` env and not docker discovery, simply mount the `/modcache` folder on your remote host(s), ensuring it is mapped for all participating containers.
 
 If you are using docker discovery, our only supported means for connecting to remote hosts is [our socket proxy container](https://github.com/linuxserver/docker-socket-proxy/). Run an instance on each remote host:
 
->[!WARNING]
->DO NOT expose a socket proxy to your LAN if it allows any write operations (`POST=1`, `ALLOW_RESTART=1`, etc) or exposes any API elements that are not absolutely necessary. NEVER expose a socket proxy to your WAN.
+?+warning[Security](|DO NOT expose a socket proxy to your LAN if it allows any write operations (`POST=1`, `ALLOW_RESTART=1`, etc) or exposes any API elements that are not absolutely necessary. NEVER expose a socket proxy to your WAN.|)
 
 ```yml
   modmanager-dockerproxy:
@@ -109,8 +107,7 @@ As above you will need to mount the `/modcache` folder on your remote host(s), e
 
 To help you get started creating a container from this image you can either use docker compose or the docker cli.
 
->[!NOTE]
->Unless a parameter is flaged as 'optional', it is *mandatory* and a value must be provided.
+?+note[Params](|Unless a parameter is flaged as 'optional', it is *mandatory* and a value must be provided.|)
 
 ### docker compose (recommended, [click here for more info](https://docs.linuxserver.io/general/docker-compose))
 
@@ -250,8 +247,7 @@ docker image prune
 
 ### Image Update Notifications - Diun (Docker Image Update Notifier)
 
->[!TIP]
->We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.
+?+tip[Diun](|We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.|)
 
 ## Building locally
 
