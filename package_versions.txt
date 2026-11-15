@@ -18,7 +18,7 @@ coreutils-env                     9.11-r0           apk
 coreutils-fmt                     9.11-r0           apk          
 coreutils-sha512sum               9.11-r0           apk          
 curl                              8.23.0-r0         apk          
-docker-cli                        29.9.3-r0         apk          
+docker-cli                        29.9.3-r1         apk          
 findutils                         4.10.0-r1         apk          
 github.com/docker/cli/cmd/docker  UNKNOWN           go-module    
 jq                                1.8.2-r0          apk          
